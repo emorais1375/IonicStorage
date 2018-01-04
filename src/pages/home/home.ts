@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
-import { ContactProvider, Contact, ContactList } from '../../providers/contact/contact'
+import { ContactProvider, ContactList } from '../../providers/contact/contact'
 
 @Component({
   selector: 'page-home',
@@ -28,8 +28,8 @@ export class HomePage {
   removeContact(item: ContactList) {
     this.contactProvider.remove(item.key).then(() => {
       // Removendo do array de items
-      var index = this.contacts.indexOf(item);
-      this.contacts.slice(index, 1);
+      let index = this.contacts.indexOf(item);
+      this.contacts.splice(index, 1);
       this.toast.create({ message: 'Contato removido.', duration: 3000, position: 'botton' }).present();
     })
   }
